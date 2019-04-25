@@ -3,63 +3,82 @@ package greetings;
 
 
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 public class Greets {
+    private static AtomicReferenceFieldUpdater world;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Greeted greeted = new Greeted();
 
         boolean stop = true;
 
-
         while (stop) {
-            System.out.println("Please enter command: ");
-            String commands = scanner.nextLine(); // greet lihle venda
-            if(commands.equals("exit")) {
-                stop = false;
-//                Cheers();
-                return;
-            }
+                System.out.println("Please enter command: ");
+                String commands = scanner.nextLine(); // greet lihle venda
+                String[] commandsArrays = commands.split(" ");
 
-            String[] commandArray = commands.split(" ");
-
-            if(commandArray[0].equals("greet")) {
-                //check if name and language are provided
-                String language = "English", name = "";
-
-                if(commandArray.length == 2) {
-                    //no language
-                    name = commandArray[1];
-
-                } else if(commandArray.length == 3) {
-                    //language provided
-                    language = commandArray[2];
-                    name = commandArray[1];
+                if(commands.equals("exit")) {
+                    stop = false;
+                    cheers();
+                    return;
                 }
+                if(commands.equals("help")){
+                    String help = "greet\n" + "greeted\n" + "counter\n" + "clear\n" + "are all valid commands";
+                    System.out.println(help);
 
-                System.out.println(greeted.greetPerson(name, language));
+                } else if(commandsArrays[0].equals("clear")){
+                    if(commandsArrays.length == 2) {
+                        String name = commandsArrays[1];
+                        greeted.clearUser(name);
+                    } else {
+                        greeted.clearance();
+                    }
 
-            } else if(commandArray[0].equals("greeted")) {
-                System.out.println(greeted.greeted());
+                } else if(commandsArrays[0].equals("greet")) {
+                    //check if name and language are provided
+                    String language = "English", name = "";
 
-            } else {
-                System.out.println("Invalid command.");
-            }
+                    if(commandsArrays.length == 2) {
+                        //no language
+                        name = commandsArrays[1];
+
+                    } else if(commandsArrays.length == 3) {
+                        //language provided
+                        language = commandsArrays[2];
+                        name = commandsArrays[1];
+                    }
+
+                    System.out.println(greeted.greetPerson(name, language));
+
+                } else if(commandsArrays[0].equals("greeted")) {
+                    if(commandsArrays.length == 2) {
+                        String name = commandsArrays[1];
+                        System.out.printf("%s have been greeted %d time(s)", name, greeted.greetedUser(name));
+                        System.out.println();
+                    } else {
+                        System.out.println(greeted.greeted());
+                    }
+
+                } else {
+
+                    System.out.println("Invalid command.");
+                }
 
 
         }
 
 
-//
-//        System.out.print("Please enter your name: ");
-//        String name = greet.nextLine();
-//        System.out.print("Please enter language: ");
-//        String language = greet.nextLine();
+    }
 
-
-
-
+    private static void cheers() {
+        System.out.println("Cheers Man!");
     }
 
 
 }
+
+
+

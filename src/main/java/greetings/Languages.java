@@ -2,7 +2,7 @@ package greetings;
 
 public enum Languages {
     English("Hello, "),
-    Afrikaans("Hallo, "),
+    Venda("Ndaa, "),
     Xhosa("Molo, "),
     Zulu("Sawbona, ");
 
@@ -18,3 +18,5 @@ public enum Languages {
     }
 
 }
+
+

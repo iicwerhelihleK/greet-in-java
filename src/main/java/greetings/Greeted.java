@@ -10,8 +10,6 @@ public class Greeted {
     HashMap<String, Integer> world = new HashMap<String, Integer>();
 
 
-
-
     public String greetPerson(String name, String language) {
         //add to HashMap, increment user count
 
@@ -27,21 +25,35 @@ public class Greeted {
             return (Languages.valueOf("English").getLanguage() + name);
         }
 
-//        if(language.equals("english")) {
-//            return "Hello, " + name;
-//        }
-//        else if(language.equals("afrikaans")){
-//            return "Hallo, " + name;
-//        } else {
-//            return "Molo, " + name;
-//        }
+
     }
 
     public HashMap<String, Integer> greeted() {
         return world;
     }
 
+    public int greetedUser(String name) {
+        if(world.containsKey(name)) {
+            return world.get(name); //{jan=2}
+        } else {
+            return 0;
+        }
+    }
+
+    public void clearance(){
+//      removes all the users
+        world.clear();
+    }
+
+    public void clearUser(String name){
+//      removes the user specified
+        world.remove(name);
+    }
+
+
     public int greetedCount() {
+//      keeps record of the times users are greeted
         return world.size(); //size of hashmap
     }
+
 }
