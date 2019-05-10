@@ -2,7 +2,7 @@ package greetings;
 
 public enum Languages {
     English("Hello, "),
-    Venda("Ndaa, "),
+    Afrikaans("Hallo, "),
     Xhosa("Molo, "),
     Zulu("Sawbona, ");
 
@@ -15,8 +15,7 @@ public enum Languages {
 
     private Languages(String greeting) {
         this.greeting = greeting;
+
     }
 
 }
-
-

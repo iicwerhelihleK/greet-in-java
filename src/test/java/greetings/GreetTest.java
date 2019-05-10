@@ -9,13 +9,14 @@ public class GreetTest {
     public void shouldGreet(){
         Greeted greeted = new Greeted();
 
-        assertEquals(greeted.greetPerson("Jan", "xhosa"), "Hello, Jan");
+        assertEquals(greeted.greetPerson("Jan", "english"), "Hello, Jan");
     }
 
     @Test
     public void shouldGreetWithDef(){
         Greeted greeted = new Greeted();
-
+        Greeted greetedTwice = new Greeted();
+        Greeted greetedTrice = new Greeted();
 
         assertEquals(greeted.greetPerson("Jan", "English"), "Hello, Jan");
 
