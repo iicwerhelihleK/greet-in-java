@@ -46,6 +46,14 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>
+                        ${project.build.directory}
+                    </outputDirectory>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>

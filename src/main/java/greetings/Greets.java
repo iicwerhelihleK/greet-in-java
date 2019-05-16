@@ -2,12 +2,18 @@ package greetings;
 // call methods from greeted
 
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Greets {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Scanner scanner = new Scanner(System.in);
-        Greeted greeted = new Greeted();
+//        for HashMap
+       // Greeted greeted = new Greeted();
+
+//        for DataBase
+        Jdbc_greeting greeted = new Jdbc_greeting();
+
 
         boolean stop = true;
 
@@ -18,12 +24,21 @@ public class Greets {
             String[] commandsArrays = commands.split(" ");
 
             if(commands.equals("exit")) {
-                stop = false;
-                cheers();
-                return;
+//                stop = false;
+//                cheers();
+//                return;
+                System.out.println(greeted.exit());
             }
             if(commands.equals("help")){
-                String help = "greet\n" + "greeted\n" + "counter\n" + "clear\n" + "are all valid commands";
+                StringBuilder help = new StringBuilder();
+
+                help.append("greet + name will greet a person in default language. \n");
+                help.append("greet + name + language will greet a person with specified language. \n");
+                help.append("greeted will print out the users that you have greeted. \n");
+                help.append("greetedUser will print out the specified person that has been greeted \n");
+                help.append("greetedCount will print all the people you have greeted \n");
+                help.append("clear removes all users greeted \n");
+
                 System.out.println(help);
 
             } else if(commandsArrays[0].equals("clear")){
@@ -31,7 +46,7 @@ public class Greets {
                     String name = commandsArrays[1];
                     greeted.clearUser(name);
                 } else {
-                    greeted.clearance();
+                    greeted.clearsAll();
                 }
 
             } else if(commandsArrays[0].equals("greet")) {
@@ -53,13 +68,18 @@ public class Greets {
             } else if(commandsArrays[0].equals("greeted")) {
                 if(commandsArrays.length == 2) {
                     String name = commandsArrays[1];
-                    System.out.printf("%s hasgree been greeted %d time(s)", name, greeted.greetedUser(name));
+                    System.out.printf("%s has been greeted %d time(s)", name, greeted.greetedUser(name));
                     System.out.println();
                 } else {
                     System.out.println(greeted.greeted());
                 }
 
-            } else {
+            }
+            else if(commandsArrays[0].equals("counter")){
+                System.out.println(greeted.greetedCount());
+
+            }
+            else {
 
                 System.out.println("Invalid command.");
 
@@ -67,8 +87,6 @@ public class Greets {
 
 
         }
-
-
 
     }
 

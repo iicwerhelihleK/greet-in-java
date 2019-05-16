@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GreetTest {
+public class LanguageTest {
     @Test
     public void shouldGreet(){
         Greeted greeted = new Greeted();

@@ -2,9 +2,21 @@ package greetings;
 
 import java.sql.*;
 import java.util.HashMap;
-import java.util.Map;
 
-public class Jdbc_greeting {
+public class Jdbc_greeting implements GreetedHash {
+
+    /*
+     * todo:
+     *   - create a Jdbc_greeting contructor
+     *       * load the driver => Class.forName()
+     *       *connect sql string insertPrep => conn.preparestatement(INSERT_USER_SQL)
+     *   - create sql string for queries => INSERT_USER_SQL = "INSERT..."
+     *   - create methods:
+     *       - addUser
+     *       - updateUser
+     *       - deleteUser/deleteUsers
+     *       -findUser/findUsers
+     * */
 
     final String KOANS_DATABASE_URL = "jdbc:h2:./target/jdbc_greeting";
 //    CREATE/ ADD
@@ -12,14 +24,14 @@ public class Jdbc_greeting {
 
 //    READ/ FIND
     final String FIND_A_USER_SQL = "select * from greeting where name = ?";
-    final String FIND_USERS_SQL = "select * from greeting";
+    final String FIND_ALL_USERS_SQL = "select * from greeting";
 
 //    UPDATE
     final String UPDATE_A_USER_SQL = "update greeting SET counter = counter + 1 where name = ?";
 
 //    DELETE
     final String DELETE_A_USER_SQL = "delete from greeting where name = ?";
-    final String DELETE_USERS_SQL = "delete from greeting";
+    final String DELETE_ALL_USERS_SQL = "delete from greeting";
 
 
 //    PREPARED STATEMENTS
@@ -47,12 +59,12 @@ public class Jdbc_greeting {
             addAUserPreparedStatement = conn.prepareStatement(ADD_A_USER_SQL);
 
             findAUserPreparedStatement = conn.prepareStatement(FIND_A_USER_SQL);
-            findAllUsersPreparedStatement = conn.prepareStatement(FIND_USERS_SQL);
+            findAllUsersPreparedStatement = conn.prepareStatement(FIND_ALL_USERS_SQL);
 
             updateAUserPreparedStatement = conn.prepareStatement(UPDATE_A_USER_SQL);
 
             deleteAUserPreparedStatement = conn.prepareStatement(DELETE_A_USER_SQL);
-            deleteAllUsersPreparedStatement = conn.prepareStatement(DELETE_USERS_SQL);
+            deleteAllUsersPreparedStatement = conn.prepareStatement(DELETE_ALL_USERS_SQL);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -60,27 +72,26 @@ public class Jdbc_greeting {
     }
 
 
-    void addUsers(String name) throws SQLException {
-        addAUserPreparedStatement.setString(1, name);
-        addAUserPreparedStatement.setInt(2, 1 );
-        addAUserPreparedStatement.execute();
 
-    }
 
-    public Map findAUser(String name) throws SQLException {
-//        "select * from greeting where name = ?";
-        HashMap<String, Integer> userNames = new HashMap<String, Integer>();
-        findAUserPreparedStatement.setString(1,name);
-        ResultSet rs = findAUserPreparedStatement.executeQuery();
-        if(rs.next()){
-            int counter = rs.getInt("counter");
-            userNames.put(name, counter);
+    public String greetPerson(String name, String language) throws SQLException {
+        if(name.equals("1")){
+            updateAUserPreparedStatement.setString(1, name);
+            updateAUserPreparedStatement.executeUpdate();
+
+
+        }else{
+            addAUserPreparedStatement.setString(1, name);
+            addAUserPreparedStatement.setInt(2, 1 );
+            addAUserPreparedStatement.execute();
+
         }
-        return userNames;
+        return name;
 
     }
 
-    public Map findUsers() throws SQLException {
+
+    public HashMap<String, Integer> greeted() throws SQLException {
         HashMap<String, Integer> userNames = new HashMap<String, Integer>();
 
         ResultSet rs = findAllUsersPreparedStatement.executeQuery();
@@ -95,33 +106,39 @@ public class Jdbc_greeting {
         return userNames;
     }
 
-    public void updateUser(String name) throws SQLException {
-        updateAUserPreparedStatement.setString(1, name);
-        updateAUserPreparedStatement.executeUpdate();
 
-
+    public int greetedCount() {
+        return 0;
     }
 
-    public void deleteAUser(String name) throws SQLException {
+
+    public int greetedUser(String name) throws SQLException {
+        HashMap<String, Integer> userNames = new HashMap<String, Integer>();
+        findAUserPreparedStatement.setString(1, name);
+        ResultSet rs = findAUserPreparedStatement.executeQuery();
+        int counter = 0;
+        if (rs.next()) {
+            counter = rs.getInt("counter");
+            userNames.put(name, counter);
+        }
+        return counter;
+    }
+
+
+    public String clearUser(String name) throws SQLException {
         deleteAUserPreparedStatement.setString(1, name);
         deleteAUserPreparedStatement.execute();
-
+        return null;
     }
 
-    public void deleteUsers() throws SQLException {
+
+    public String clearsAll() throws SQLException {
         deleteAllUsersPreparedStatement.execute();
+        return null;
     }
 
-/*
-* todo:
-*   - create a Jdbc_greeting contructor
-*       * load the driver => Class.forName()
-*       *connect sql string insertPrep => conn.preparestatement(INSERT_USER_SQL)
-*   - create sql string for queries => INSERT_USER_SQL = "INSERT..."
-*   - create methods:
-*       - addUser
-*       - updateUser
-*       - deleteUser/deleteUsers
-*       -findUser/findUsers
-* */
+
+    public String exit() {
+        return null;
+    }
 }

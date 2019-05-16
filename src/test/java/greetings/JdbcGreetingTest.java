@@ -8,21 +8,47 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JdbcGreetingTest {
     @Test
-    public void saySomething() throws SQLException, ClassNotFoundException {
+    public void createAndReadUsers() throws SQLException, ClassNotFoundException {
         Jdbc_greeting db = new Jdbc_greeting();
 
-//        db.addUsers("Lihle");
-//        db.addUsers("Thabang");
-//        System.out.println(db.findUsers());
-//        db.deleteAUser("Thabang");
-        System.out.println(db.findUsers());
-        db.updateUser("Lihle");
-        System.out.println(db.findUsers());
 
-
+        db.addUsers("Steve Austin");
+        db.addUsers("The Rock");
+        db.addUsers("Brock Lesnar");
+        db.addUsers("Great Khali");
+        db.addUsers("Mark Hendry");
+        db.addUsers("Big Show");
+        System.out.println(db.findUsers());
 
         assertEquals(1, 1);
 
     }
+
+    @Test
+    public void UpdateUsers() throws ClassNotFoundException, SQLException {
+        Jdbc_greeting db = new Jdbc_greeting();
+
+        db.findUsers();
+        System.out.println(db.findUsers());
+        db.updateAUser("Big Show");;
+        System.out.println(db.findUsers());
+
+        assertEquals(1, 1);
+
+    }
+
+    @Test
+    public void deleteAUser() throws ClassNotFoundException, SQLException {
+        Jdbc_greeting db = new Jdbc_greeting();
+
+        db.deleteAUser("Steve Austin");
+        System.out.println(db.findUsers());
+
+        assertEquals(1, 1);
+    }
+
+
+
+
 
 }
