@@ -5,19 +5,6 @@ import java.util.HashMap;
 
 public class Jdbc_greeting implements GreetedHash {
 
-    /*
-     * todo:
-     *   - create a Jdbc_greeting contructor
-     *       * load the driver => Class.forName()
-     *       *connect sql string insertPrep => conn.preparestatement(INSERT_USER_SQL)
-     *   - create sql string for queries => INSERT_USER_SQL = "INSERT..."
-     *   - create methods:
-     *       - addUser
-     *       - updateUser
-     *       - deleteUser/deleteUsers
-     *       -findUser/findUsers
-     * */
-
     final String KOANS_DATABASE_URL = "jdbc:h2:./target/jdbc_greeting";
 //    CREATE/ ADD
     final String ADD_A_USER_SQL = "insert into greeting (name, counter) values (?, ?)";
@@ -75,7 +62,7 @@ public class Jdbc_greeting implements GreetedHash {
 
 
     public String greetPerson(String name, String language) throws SQLException {
-        if(name.equals("1")){
+        if(greetedUser(name).containsKey(name)){
             updateAUserPreparedStatement.setString(1, name);
             updateAUserPreparedStatement.executeUpdate();
 
@@ -86,7 +73,11 @@ public class Jdbc_greeting implements GreetedHash {
             addAUserPreparedStatement.execute();
 
         }
-        return name;
+        try {
+            return (Languages.valueOf(language).getLanguage() + name);
+        } catch (IllegalArgumentException e) {
+            return (Languages.valueOf("English").getLanguage() + name);
+        }
 
     }
 
@@ -100,7 +91,6 @@ public class Jdbc_greeting implements GreetedHash {
             String name = rs.getString("name");
             int counter = rs.getInt("counter");
             userNames.put(name, counter);
-//            System.out.println(rs.getString("name") + "    " + rs.getInt("counter") );
         }
 
         return userNames;
@@ -112,7 +102,7 @@ public class Jdbc_greeting implements GreetedHash {
     }
 
 
-    public int greetedUser(String name) throws SQLException {
+    public HashMap<String,  Integer> greetedUser(String name) throws SQLException {
         HashMap<String, Integer> userNames = new HashMap<String, Integer>();
         findAUserPreparedStatement.setString(1, name);
         ResultSet rs = findAUserPreparedStatement.executeQuery();
@@ -121,7 +111,7 @@ public class Jdbc_greeting implements GreetedHash {
             counter = rs.getInt("counter");
             userNames.put(name, counter);
         }
-        return counter;
+        return userNames;
     }
 
 

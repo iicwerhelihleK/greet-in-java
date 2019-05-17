@@ -38,12 +38,13 @@ public class Greeted implements GreetedHash {
         return world.size(); //size of hashmap
     }
 
-    public int greetedUser(String name) {
-        if(world.containsKey(name)) {
-            return world.get(name); //{jan=2}
-        } else {
-            return 0;
+    public HashMap<String, Integer> greetedUser(String name) {
+        HashMap<String, Integer> user = new HashMap<>();
+        if(world.containsKey(name)){
+            user.put(name, world.get(name));
         }
+
+        return user;
     }
 
 

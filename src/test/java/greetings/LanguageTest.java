@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LanguageTest {
     @Test
-    public void shouldGreet(){
+    public void shouldGreetAPerson(){
         Greeted greeted = new Greeted();
 
         assertEquals(greeted.greetPerson("Jan", "english"), "Hello, Jan");
