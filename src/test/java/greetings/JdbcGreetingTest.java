@@ -12,12 +12,12 @@ public class JdbcGreetingTest {
         Jdbc_greeting db = new Jdbc_greeting();
 
 
-        db.greetPerson("Steve Austin", "English");
-        db.greetPerson("The Rock", "English");
-        db.greetPerson("Brock Lesnar", "English");
-        db.greetPerson("Great Khali", "English");
-        db.greetPerson("Mark Hendry", "English");
-        db.greetPerson("Big Show", "English");
+        db.greetPerson("SteveAustin", "English");
+        db.greetPerson("TheRock", "English");
+        db.greetPerson("BrockLesnar", "English");
+        db.greetPerson("GreatKhali", "English");
+        db.greetPerson("MarkHendry", "English");
+        db.greetPerson("BigShow", "English");
         System.out.println(db.greeted());
 
         assertEquals(1, 1);
@@ -30,7 +30,7 @@ public class JdbcGreetingTest {
 
         db.greeted();
         System.out.println(db.greeted());
-        db.greetPerson("Big Show", "English");;
+        db.greetPerson("BigShow", "English");;
         System.out.println(db.greeted());
 
         assertEquals(1, 1);
@@ -41,8 +41,8 @@ public class JdbcGreetingTest {
     public void deleteAUser() throws ClassNotFoundException, SQLException {
         Jdbc_greeting db = new Jdbc_greeting();
 
-        db.clearUser("Steve Austin");
-        System.out.println(db.greetedUser("Big Show"));
+        db.clearUser("SteveAustin");
+        System.out.println(db.greeted());
 
         assertEquals(1, 1);
     }

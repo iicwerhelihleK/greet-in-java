@@ -52,14 +52,14 @@ public class Greeted implements GreetedHash {
     public String clearsAll(){
 //      removes all the users
         world.clear();
-        return ("All users has been removed");
+        return "All users has been removed";
     }
 
 
     public String clearUser(String name){
 //      removes the user specified
         world.remove(name);
-        return (name + "has been removed");
+        return name + "has been removed";
     }
 
     public StringBuilder helpInfo(){
@@ -78,7 +78,7 @@ public class Greeted implements GreetedHash {
     public String exit(){
         System.exit(1);
 
-        return ("Goodbye!");
+        return "Goodbye!";
 
     }
 

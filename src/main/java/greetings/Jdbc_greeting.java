@@ -97,8 +97,8 @@ public class Jdbc_greeting implements GreetedHash {
     }
 
 
-    public int greetedCount() {
-        return 0;
+    public int greetedCount() throws SQLException{
+        return greeted().size();
     }
 
 
@@ -118,17 +118,19 @@ public class Jdbc_greeting implements GreetedHash {
     public String clearUser(String name) throws SQLException {
         deleteAUserPreparedStatement.setString(1, name);
         deleteAUserPreparedStatement.execute();
-        return null;
+        System.out.println(name + " has been deleted.");
+        return "";
     }
 
 
     public String clearsAll() throws SQLException {
         deleteAllUsersPreparedStatement.execute();
-        return null;
+        System.out.println("All users have been deleted.");
+        return "";
     }
 
 
     public String exit() {
-        return null;
+        return "Goodbye!";
     }
 }

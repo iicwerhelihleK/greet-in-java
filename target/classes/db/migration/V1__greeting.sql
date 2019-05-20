@@ -1,5 +1,5 @@
 create table greeting (
                     id INT PRIMARY KEY AUTO_INCREMENT ,
-                    name varchar NOT NULL,
+                    name char NOT NULL,
                     counter int NOT NULL
                 );

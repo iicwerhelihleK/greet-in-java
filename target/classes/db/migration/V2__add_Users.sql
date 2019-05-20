@@ -1,3 +1,3 @@
-insert into greeting (name, counter) values ('Cwerhelihle');
-insert into greeting (name, counter) values ('Odwa');
-insert into greeting (name, counter) values ('Kula');
+insert into greeting (name, counter) values ('Cwerhelihle', 1);
+insert into greeting (name, counter) values ('Odwa', 1);
+insert into greeting (name, counter) values ('Kula', 1);
