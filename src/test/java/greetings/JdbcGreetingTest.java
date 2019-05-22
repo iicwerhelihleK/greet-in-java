@@ -18,9 +18,8 @@ public class JdbcGreetingTest {
         db.greetPerson("GreatKhali", "English");
         db.greetPerson("MarkHendry", "English");
         db.greetPerson("BigShow", "English");
-        System.out.println(db.greeted());
 
-        assertEquals(1, 1);
+        assertEquals("{MarkHendry=3, SteveAustin=3, BrockLesnar=3, BigShow=3, GreatKhali=3, TheRock=3}", db.greeted());
 
     }
 
@@ -28,12 +27,9 @@ public class JdbcGreetingTest {
     public void UpdateUsers() throws ClassNotFoundException, SQLException {
         Jdbc_greeting db = new Jdbc_greeting();
 
-        db.greeted();
-        System.out.println(db.greeted());
         db.greetPerson("BigShow", "English");;
-        System.out.println(db.greeted());
 
-        assertEquals(1, 1);
+        assertEquals("{MarkHendry=3, SteveAustin=3, BrockLesnar=3, BigShow=5, GreatKhali=3, TheRock=3}", db.greeted());
 
     }
 
@@ -42,9 +38,9 @@ public class JdbcGreetingTest {
         Jdbc_greeting db = new Jdbc_greeting();
 
         db.clearUser("SteveAustin");
-        System.out.println(db.greeted());
 
-        assertEquals(1, 1);
+
+        assertEquals("{MarkHendry=3, BrockLesnar=3, BigShow=5, GreatKhali=3, TheRock=3}", db.greeted());
     }
 
 

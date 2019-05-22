@@ -7,11 +7,9 @@ public class CommandProcessor {
 
     public  CommandProcessor(GreetedHash greetedHash){
         this.greeted = greetedHash;
-//        database here
-
     }
 
-//
+
 //   method executor that takes in a commandExtractor
     public String executor(CommandExtractor commandExtractor) throws SQLException {
         String command = commandExtractor.getCommand();
@@ -29,58 +27,37 @@ public class CommandProcessor {
             help.append("clear removes all users greeted \n");
             help.append("exit gets you out of the application \n");
 
-            System.out.println(help);
+            return  help.toString();
 
         } else if(command.equals("clear")){
             if(!commandExtractor.getName().isEmpty()) {
-                greeted.clearUser(name);
+                return greeted.clearUser(name);
 
             } else {
-                greeted.clearsAll();
+                return greeted.clearsAll();
             }
 
         } else if(command.equals("greet")) {
             if(!commandExtractor.getName().isEmpty()) {
-                System.out.println(greeted.greetPerson(name, language));
+                return greeted.greetPerson(name, language);
             }
-            //check if name and language are provided
-//            String language = "English", name = "";
-//
-//            if(commandsArrays.length == 2) {
-//                //no language
-//                name = commandsArrays[1];
-//
-//            } else if(commandsArrays.length == 3) {
-//                //language provided
-////                language = commandsArrays[2];
-////                name = commandsArrays[1];
-//            }
 
 
+        } else if(command.equals("greeted")) {
+            if(!name.equals("")) {
+                return greeted.greetedUser(name);
 
-//        } else if(commandsArrays[0].equals("greeted")) {
-//            if(commandsArrays.length == 2) {
-//                String name = commandsArrays[1];
-//                System.out.printf("%s has been greeted %d time(s)", name, greeted.greetedUser(name).get(name));
-//                System.out.println();
-//            } else {
-//                System.out.println(greeted.greeted());
-//            }
-//
-//        }
-//        else if(commandsArrays[0].equals("counter")){
-//            System.out.println(greeted.greetedCount());
-//
-//        }
-//        else {
-//
-//            System.out.println("Invalid command.");
-//
+            } else {
+                return greeted.greeted();
+            }
+
         }
-        return "";
+        else if(command.equals("counter")){
+            return greeted.greetedCount();
 
+        }
 
-
+        return  "Invalid command." ;
     }
 }
 

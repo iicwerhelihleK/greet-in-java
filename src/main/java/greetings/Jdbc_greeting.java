@@ -62,7 +62,13 @@ public class Jdbc_greeting implements GreetedHash {
 
 
     public String greetPerson(String name, String language) throws SQLException {
-        if(greetedUser(name).containsKey(name)){
+        HashMap<String, Integer> userNames = new HashMap<String, Integer>();
+        ResultSet rs = findAllUsersPreparedStatement.executeQuery();
+        while (rs.next()) {
+            userNames.put(rs.getString("name"),rs.getInt("counter"));
+        }
+
+        if(userNames.containsKey(name)){
             updateAUserPreparedStatement.setString(1, name);
             updateAUserPreparedStatement.executeUpdate();
 
@@ -82,7 +88,7 @@ public class Jdbc_greeting implements GreetedHash {
     }
 
 
-    public HashMap<String, Integer> greeted() throws SQLException {
+    public String greeted() throws SQLException {
         HashMap<String, Integer> userNames = new HashMap<String, Integer>();
 
         ResultSet rs = findAllUsersPreparedStatement.executeQuery();
@@ -93,16 +99,21 @@ public class Jdbc_greeting implements GreetedHash {
             userNames.put(name, counter);
         }
 
-        return userNames;
+        return userNames.toString();
     }
 
 
-    public int greetedCount() throws SQLException{
-        return greeted().size();
+    public String greetedCount() throws SQLException{
+        HashMap<String, Integer> userNames = new HashMap<String, Integer>();
+        ResultSet rs = findAllUsersPreparedStatement.executeQuery();
+        while (rs.next()) {
+            userNames.put(rs.getString("name"),rs.getInt("counter"));
+        }
+        return "names greeted: " + userNames.size();
     }
 
 
-    public HashMap<String,  Integer> greetedUser(String name) throws SQLException {
+    public String greetedUser(String name) throws SQLException {
         HashMap<String, Integer> userNames = new HashMap<String, Integer>();
         findAUserPreparedStatement.setString(1, name);
         ResultSet rs = findAUserPreparedStatement.executeQuery();
@@ -111,22 +122,20 @@ public class Jdbc_greeting implements GreetedHash {
             counter = rs.getInt("counter");
             userNames.put(name, counter);
         }
-        return userNames;
+        return name + " has been greeted " + userNames.get(name) + " time(s) ";
     }
 
 
     public String clearUser(String name) throws SQLException {
         deleteAUserPreparedStatement.setString(1, name);
         deleteAUserPreparedStatement.execute();
-        System.out.println(name + " has been deleted.");
-        return "";
+        return name + " has been deleted.";
     }
 
 
     public String clearsAll() throws SQLException {
         deleteAllUsersPreparedStatement.execute();
-        System.out.println("All users have been deleted.");
-        return "";
+        return "All users have been deleted.";
     }
 
 

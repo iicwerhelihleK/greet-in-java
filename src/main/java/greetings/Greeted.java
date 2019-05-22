@@ -30,21 +30,21 @@ public class Greeted implements GreetedHash {
     }
 
 
-    public HashMap<String, Integer> greeted() {
-        return world;
+    public String greeted() {
+        return world.toString();
     }
 
-    public int greetedCount() {
-        return world.size(); //size of hashmap
+    public String greetedCount() {
+        return world.size() + " "; //size of hashmap
     }
 
-    public HashMap<String, Integer> greetedUser(String name) {
+    public String greetedUser(String name) {
         HashMap<String, Integer> user = new HashMap<>();
         if(world.containsKey(name)){
             user.put(name, world.get(name));
         }
 
-        return user;
+        return user.get(name).toString();
     }
 
 

@@ -9,10 +9,10 @@ public class Greets {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Scanner scanner = new Scanner(System.in);
 //        for HashMap
-       // Greeted greeted = new Greeted();
+//        GreetedHash greetedHash = new Greeted();
 
 //        for DataBase
-        Jdbc_greeting greeted = new Jdbc_greeting();
+        GreetedHash greetedHash = new Jdbc_greeting();
 
 
         boolean stop = true;
@@ -26,14 +26,14 @@ public class Greets {
             if(commands.equals("exit")) {
                 stop = false;
 //                cheers();
-                System.out.println(greeted.exit());
+                System.out.println(greetedHash.exit());
 
                 return;
             }
 
             CommandExtractor commandExtractor = new CommandExtractor(commands);
-            CommandProcessor commandProcessor = new CommandProcessor(greeted);
-            commandProcessor.executor(commandExtractor);
+            CommandProcessor commandProcessor = new CommandProcessor(greetedHash);
+            System.out.println(commandProcessor.executor(commandExtractor));
 
 
 
