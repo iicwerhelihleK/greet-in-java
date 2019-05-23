@@ -9,9 +9,6 @@ public class Greeted implements GreetedHash {
 
     HashMap<String, Integer> world = new HashMap<String, Integer>();
 
-
-
-
     public String greetPerson(String name, String language) {
         //add to HashMap, increment user count
 
@@ -39,12 +36,7 @@ public class Greeted implements GreetedHash {
     }
 
     public String greetedUser(String name) {
-        HashMap<String, Integer> user = new HashMap<>();
-        if(world.containsKey(name)){
-            user.put(name, world.get(name));
-        }
-
-        return user.get(name).toString();
+        return name + world.get(name);
     }
 
 
@@ -76,10 +68,8 @@ public class Greeted implements GreetedHash {
     }
 
     public String exit(){
-        System.exit(1);
 
         return "Goodbye!";
-
     }
 
 
