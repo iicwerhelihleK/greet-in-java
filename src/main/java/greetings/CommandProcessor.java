@@ -56,6 +56,11 @@ public class CommandProcessor {
             return greeted.greetedCount();
 
         }
+        else if(command.equals("exit")){
+            return greeted.exit();
+
+
+        }
 
         return  "Invalid command." ;
     }

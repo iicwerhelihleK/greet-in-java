@@ -21,31 +21,19 @@ public class Greets {
         while (stop) {
             System.out.println("Please enter command: ");
             String commands = scanner.nextLine(); // greet lihle venda
-            String[] commandsArrays = commands.split(" ");
-
-            if(commands.equals("exit")) {
-                stop = false;
-//                cheers();
-                System.out.println(greetedHash.exit());
-
-                return;
-            }
-
             CommandExtractor commandExtractor = new CommandExtractor(commands);
             CommandProcessor commandProcessor = new CommandProcessor(greetedHash);
+
+            if(commandProcessor.executor(commandExtractor).equals("Goodbye!")) {
+                System.out.println(commandProcessor.executor(commandExtractor));
+                System.exit(0);
+            }
+
             System.out.println(commandProcessor.executor(commandExtractor));
-
-
-
-
         }
 
     }
 
-//    private static void cheers() {
-//        System.out.println("Cheers Man!");
-//
-//    }
 
 }
 

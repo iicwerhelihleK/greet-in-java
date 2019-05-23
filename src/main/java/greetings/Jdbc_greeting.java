@@ -38,7 +38,7 @@ public class Jdbc_greeting implements GreetedHash {
         return conn;
     }
 
-    public Jdbc_greeting() throws ClassNotFoundException {
+    public Jdbc_greeting(){
         try {
             Class.forName("org.h2.Driver");
             Connection conn = getConnection();
