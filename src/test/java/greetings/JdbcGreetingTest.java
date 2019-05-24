@@ -10,8 +10,9 @@ public class JdbcGreetingTest {
     @Test
     public void readUsers() throws SQLException, ClassNotFoundException {
         Jdbc_greeting db = new Jdbc_greeting();
-
-        assertEquals("{MarkHendry=1, BrockLesnar=4, BigShow=5, Odwa=1, GreatKhali=2, Kula=3, Cwerhelihle=2, TheRock=3}", db.greeted());
+         db.clearsAll();
+         db.greetPerson("Lunga", "Xhosa");
+        assertEquals("Lunga", "Lunga", db.greetedUser("Lunga"));
 
     }
 
@@ -19,11 +20,9 @@ public class JdbcGreetingTest {
     @Test
     public void deleteAUser() throws ClassNotFoundException, SQLException {
         Jdbc_greeting db = new Jdbc_greeting();
-
+        db.clearsAll();
         db.clearUser("SteveAustin");
-
-
-        assertEquals("{MarkHendry=1, BrockLesnar=4, BigShow=5, Odwa=1, GreatKhali=2, Kula=3, Cwerhelihle=2, TheRock=3}", db.greeted());
+        assertEquals("{}", db.greeted());
     }
 
 

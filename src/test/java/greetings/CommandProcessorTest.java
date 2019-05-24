@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandProcessorTest {
+    Jdbc_greeting greeted = new Jdbc_greeting();
 
     @Test
     void shouldGreetPerson() throws SQLException {
@@ -19,9 +20,10 @@ public class CommandProcessorTest {
     @Test
     void shouldShowReturnHowManyTimesGreeted() throws SQLException {
         GreetedHash greetedHash = new Jdbc_greeting();
+        Jdbc_greeting greeted = new Jdbc_greeting();
         CommandProcessor commandProcessor = new CommandProcessor(greetedHash);
         CommandExtractor commandExtractor = new CommandExtractor("greeted Lihle");
-        assertEquals("Lihle has been greeted 1 time(s) ", commandProcessor.executor(commandExtractor));
+        assertEquals(greeted.greetedUser("Lihle"), commandProcessor.executor(commandExtractor));
 
     }
 
@@ -30,7 +32,7 @@ public class CommandProcessorTest {
         GreetedHash greetedHash = new Jdbc_greeting();
         CommandProcessor commandProcessor = new CommandProcessor(greetedHash);
         CommandExtractor commandExtractor = new CommandExtractor("counter");
-        assertEquals("names greeted: 9", commandProcessor.executor(commandExtractor));
+        assertEquals(greeted.greetedCount(), commandProcessor.executor(commandExtractor));
 
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="greetings.CommandProcessorTest" time="0.431" tests="4" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="greetings.CommandProcessorTest" time="0.454" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ZA"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/coder/Desktop/projects/greet-in-java/target/surefire/surefirebooter10797112657983442332.jar /home/coder/Desktop/projects/greet-in-java/target/surefire 2019-05-24T09-35-04_596-jvmRun1 surefire17412526491658646062tmp surefire_015706202229460504025tmp"/>
+    <property name="sun.java.command" value="/home/coder/Desktop/projects/greet-in-java/target/surefire/surefirebooter15918412142926705506.jar /home/coder/Desktop/projects/greet-in-java/target/surefire 2019-05-24T10-26-18_779-jvmRun1 surefire1383063097164046665tmp surefire_01411463890819645209tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/coder/Desktop/projects/greet-in-java/target/test-classes:/home/coder/Desktop/projects/greet-in-java/target/classes:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.0/junit-jupiter-api-5.4.0.jar:/home/coder/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/coder/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-commons/1.4.0/junit-platform-commons-1.4.0.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.0/junit-jupiter-engine-5.4.0.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-engine/1.4.0/junit-platform-engine-1.4.0.jar:/home/coder/.m2/repository/com/h2database/h2/1.4.199/h2-1.4.199.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/coder/Desktop/projects/greet-in-java/target/surefire/surefirebooter10797112657983442332.jar"/>
+    <property name="surefire.real.class.path" value="/home/coder/Desktop/projects/greet-in-java/target/surefire/surefirebooter15918412142926705506.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.3+7-Ubuntu-1ubuntu218.04.1"/>
     <property name="user.name" value="coder"/>
@@ -57,12 +57,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="shouldExitApp" classname="greetings.CommandProcessorTest" time="0.374"/>
-  <testcase name="shouldGreetPerson" classname="greetings.CommandProcessorTest" time="0.017"/>
-  <testcase name="shouldShowReturnHowManyTimesGreeted" classname="greetings.CommandProcessorTest" time="0.004"/>
-  <testcase name="shouldShowReturnCounter" classname="greetings.CommandProcessorTest" time="0.013">
-    <failure message="expected: &lt;names greeted: 9&gt; but was: &lt;names greeted: 10&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <names greeted: 9> but was: <names greeted: 10>
-	at greetings.CommandProcessorTest.shouldShowReturnCounter(CommandProcessorTest.java:33)
-]]></failure>
-  </testcase>
+  <testcase name="shouldExitApp" classname="greetings.CommandProcessorTest" time="0.018"/>
+  <testcase name="shouldGreetPerson" classname="greetings.CommandProcessorTest" time="0.013"/>
+  <testcase name="shouldShowReturnHowManyTimesGreeted" classname="greetings.CommandProcessorTest" time="0.005"/>
+  <testcase name="shouldShowReturnCounter" classname="greetings.CommandProcessorTest" time="0.003"/>
 </testsuite>
