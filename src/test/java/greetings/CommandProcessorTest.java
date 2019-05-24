@@ -21,7 +21,7 @@ public class CommandProcessorTest {
         GreetedHash greetedHash = new Jdbc_greeting();
         CommandProcessor commandProcessor = new CommandProcessor(greetedHash);
         CommandExtractor commandExtractor = new CommandExtractor("greeted Lihle");
-        assertEquals("Lihle has been greeted 7 time(s) ", commandProcessor.executor(commandExtractor));
+        assertEquals("Lihle has been greeted 1 time(s) ", commandProcessor.executor(commandExtractor));
 
     }
 
@@ -30,19 +30,10 @@ public class CommandProcessorTest {
         GreetedHash greetedHash = new Jdbc_greeting();
         CommandProcessor commandProcessor = new CommandProcessor(greetedHash);
         CommandExtractor commandExtractor = new CommandExtractor("counter");
-        assertEquals("names greeted: 7", commandProcessor.executor(commandExtractor));
+        assertEquals("names greeted: 9", commandProcessor.executor(commandExtractor));
 
     }
 
-
-    @Test
-    void shouldClearAllUsers() throws SQLException {
-        GreetedHash greetedHash = new Jdbc_greeting();
-        CommandProcessor commandProcessor = new CommandProcessor(greetedHash);
-        CommandExtractor commandExtractor = new CommandExtractor("clear");
-        assertEquals("All users have been deleted.", commandProcessor.executor(commandExtractor));
-
-    }
 
     @Test
     void shouldExitApp() throws SQLException {

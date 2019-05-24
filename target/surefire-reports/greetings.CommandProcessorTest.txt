@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: greetings.CommandProcessorTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.431 s <<< FAILURE! - in greetings.CommandProcessorTest
+shouldShowReturnCounter  Time elapsed: 0.013 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <names greeted: 9> but was: <names greeted: 10>
+	at greetings.CommandProcessorTest.shouldShowReturnCounter(CommandProcessorTest.java:33)
+

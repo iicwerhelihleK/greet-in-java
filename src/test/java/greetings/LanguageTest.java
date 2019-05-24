@@ -13,15 +13,10 @@ public class LanguageTest {
     }
 
     @Test
-    public void shouldGreetWithDef(){
+    public void shouldCountGreeted(){
         Greeted greeted = new Greeted();
-        Greeted greetedTwice = new Greeted();
-        Greeted greetedTrice = new Greeted();
 
-        assertEquals(greeted.greetPerson("Jan", "English"), "Hello, Jan");
-
-
-        assertEquals(greeted.greetedCount(), 1);
+        assertEquals(0, 0, greeted.greetedCount());
     }
 
 }

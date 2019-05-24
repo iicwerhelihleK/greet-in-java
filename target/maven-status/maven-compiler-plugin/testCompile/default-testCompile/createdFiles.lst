@@ -1,0 +1,4 @@
+greetings/CommandProcessorTest.class
+greetings/CommandExtractorTest.class
+greetings/JdbcGreetingTest.class
+greetings/LanguageTest.class

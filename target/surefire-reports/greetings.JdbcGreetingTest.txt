@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: greetings.JdbcGreetingTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in greetings.JdbcGreetingTest
+deleteAUser  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <{MarkHendry=1, BrockLesnar=4, BigShow=5, Odwa=1, GreatKhali=2, Kula=3, Cwerhelihle=2, TheRock=3}> but was: <{MarkHendry=1, Lihle=1, BrockLesnar=4, BigShow=5, Odwa=1, GreatKhali=2, Kula=3, Cwerhelihle=2, TheRock=3}>
+	at greetings.JdbcGreetingTest.deleteAUser(JdbcGreetingTest.java:26)
+
+readUsers  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <{MarkHendry=1, BrockLesnar=4, BigShow=5, Odwa=1, GreatKhali=2, Kula=3, Cwerhelihle=2, TheRock=3}> but was: <{MarkHendry=1, Lihle=1, BrockLesnar=4, BigShow=5, Odwa=1, GreatKhali=2, Kula=3, Cwerhelihle=2, TheRock=3}>
+	at greetings.JdbcGreetingTest.readUsers(JdbcGreetingTest.java:14)
+
