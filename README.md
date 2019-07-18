@@ -9,10 +9,10 @@ The app should prompt the user to enter a command.
 
 Valid commands are:
 
-greet followed by the name and the language the user is to be greeted in,
-greeted should display a list of all users that has been greeted and how many time each user has been greeted,
-greeted followed by a username returns how many times that username have been greeted,
-counter returns a count of how many unique users has been greeted,
+> greet followed by the name and the language the user is to be greeted in,
+> greeted should display a list of all users that has been greeted and how many time each user has been greeted,
+> greeted followed by a username returns how many times that username have been greeted,
+> counter returns a count of how many unique users has been greeted,
 clear deletes of all users greeted and the reset the greet counter to 0,
 clear followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,
 exit exits the application,
