@@ -1,6 +1,8 @@
 # greet_in_java
 
 [![Build Status](https://travis-ci.org/ODeeKula/greet-in-java.svg?branch=master)](https://travis-ci.org/ODeeKula/greet-in-java)
+
+
 Create a Java console app that can greet users in three or more different languages. The app should keep count of how many times a user have been greeted. And a count of how many different users has been greeted.
 
 The app should prompt the user to enter a command.
